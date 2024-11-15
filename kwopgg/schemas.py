@@ -102,7 +102,8 @@ class ClassroomReviewResponseSchema(BaseModel):
     clean_status: Optional[float] = None
     air_conditioner_status: Optional[float] = None
     size_satisfaction: Optional[float] = None
-    user_id: int
+    rating: Optional[float] = None
+
 
 
 class ClassroomReviewCreateRequestSchema(BaseModel):
@@ -112,7 +113,7 @@ class ClassroomReviewCreateRequestSchema(BaseModel):
     clean_status: Optional[float] = None
     size_satisfaction: Optional[float] = None
     air_conditioner_status: Optional[float] = None
-    user_id: int
+    rating: Optional[float] = None
 
 
 class ClassroomReviewCreateResponseSchema(BaseModel):
@@ -124,16 +125,16 @@ class ClassroomReviewCreateResponseSchema(BaseModel):
     clean_status: Optional[float] = None
     size_satisfaction: Optional[float] = None
     air_conditioner_status: Optional[float] = None
-    user_id: int
+    rating: Optional[float] = None
 
 class ClassroomReviewUpdateRequestSchema(BaseModel):
     building_name: str
     place_name: str
     mic_status: float
-    cleanliness: float
+    clean_status: float
     size_satisfaction: float
     air_conditioner_status: float
-    user_id: int
+    rating: Optional[float] = None
 
 class ClassroomReviewUpdateResponseSchema(BaseModel):
     success: bool
@@ -141,7 +142,7 @@ class ClassroomReviewUpdateResponseSchema(BaseModel):
     building_name: str
     place_name: str
     mic_status: float
-    cleanliness: float
+    clean_status: float
     size_satisfaction: float
     air_conditioner_status: float
-    user_id: int
+    rating: Optional[float] = None

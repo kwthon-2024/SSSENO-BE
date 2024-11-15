@@ -35,6 +35,7 @@ class ComplaintFormSchema(BaseModel):
     category: str
     answer: Optional[str] = None
     created: Optional[datetime] = None  # datetime 객체로 처리
+    
 
     class Config:
         from_attributes = True

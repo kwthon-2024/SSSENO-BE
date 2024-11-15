@@ -319,8 +319,7 @@ def review_room(request, data: ClassroomReviewRequestSchema):
         "mic_status": classroom.mic_status,
         "clean_status": classroom.clean_status,
         "size_satisfaction": classroom.size_satisfaction,
-        "air_conditioner_status": classroom.air_conditioner_status,
-        "user_id": classroom.user_id,
+        "air_conditioner_status": classroom.air_conditioner_status
     }
 
 #구현완료
@@ -334,8 +333,9 @@ def create_review(request, data: ClassroomReviewCreateRequestSchema):
         clean_status=data.clean_status,  
         size_satisfaction=data.size_satisfaction,
         air_conditioner_status=data.air_conditioner_status,
-        user_id=data.user_id,
+        rating=data.rating
     )
+
 
     return {
         "success": True,
@@ -346,7 +346,7 @@ def create_review(request, data: ClassroomReviewCreateRequestSchema):
         "clean_status": review.clean_status,  # 응답에 맞춰 cleanliness로 반환
         "size_satisfaction": review.size_satisfaction,
         "air_conditioner_status": review.air_conditioner_status,
-        "user_id": review.user_id,
+        "rating":review.rating
     }
 
 #구현완료
@@ -356,11 +356,13 @@ def update_review(request, data: ClassroomReviewUpdateRequestSchema):
     review = get_object_or_404(ClassroomReviewDev, building_name=data.building_name, place_name=data.place_name)
 
     review.mic_status = data.mic_status
-    review.clean_status = data.cleanliness  
+    review.clean_status = data.clean_status  
     review.size_satisfaction = data.size_satisfaction
     review.air_conditioner_status = data.air_conditioner_status
-    review.user_id = data.user_id
+    review.rating = data.rating
     
+    print(review.mic_status)
+
     review.save()
 
     return {
@@ -369,9 +371,9 @@ def update_review(request, data: ClassroomReviewUpdateRequestSchema):
         "building_name": review.building_name,
         "place_name": review.place_name,
         "mic_status": review.mic_status,
-        "cleanliness": review.clean_status,
+        "clean_status": review.clean_status,
         "size_satisfaction": review.size_satisfaction,
         "air_conditioner_status": review.air_conditioner_status,
-        "user_id": review.user_id,
+        "rating": review.rating
     }
 

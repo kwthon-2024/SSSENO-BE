@@ -22,7 +22,7 @@ class ClassroomReviewDev(models.Model):
     clean_status = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
     air_conditioner_status = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
     size_satisfaction = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
-    user_id = models.IntegerField()  
+    user_id = models.IntegerField(null=True, blank=True)  
     place_name = models.CharField(max_length=100, null=True, blank=True)
     building_name = models.CharField(max_length=100, null=True, blank=True)
     rating = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
