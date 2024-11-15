@@ -9,7 +9,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 
 
-api = NinjaAPI()
+api = NinjaAPI(urls_namespace="kwopgg_api")
 
 #구현완료
 @csrf_exempt

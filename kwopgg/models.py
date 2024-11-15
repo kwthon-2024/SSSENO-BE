@@ -25,6 +25,6 @@ class ClassroomReviewDev(models.Model):
     user_id = models.IntegerField()  
     place_name = models.CharField(max_length=100, null=True, blank=True)
     building_name = models.CharField(max_length=100, null=True, blank=True)
-    #rating = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    rating = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
     class Meta:
         db_table = 'classroom_review_dev'  
