@@ -1,6 +1,6 @@
 from django.views.decorators.csrf import csrf_exempt
 from ninja import NinjaAPI
-from .models import classroom_inf, classroom_review
+from .models import ClassroomInfDev, ClassroomReviewDev
 from .schemas import *
 from typing import List
 from django.http import JsonResponse
@@ -19,7 +19,7 @@ def search(request, data: SearchRequestSchema):
         building_title = data.building_title
         capacity_max = data.capacity_max 
 
-        all_classrooms = classroom_inf.objects.all()
+        all_classrooms = ClassroomInfDev.objects.all()
         result_data = []
 
         for classroom in all_classrooms:
@@ -40,11 +40,11 @@ def search(request, data: SearchRequestSchema):
         print(f"Error: {str(e)}")
         return JsonResponse({"message": "서버에서 오류가 발생했습니다."}, status=500)
     
+#구현완료
 @csrf_exempt
 @api.post('/classroom/room/filter', response=List[dict])
 def search(request, data: SearchfilterRequestSchema):
     try:
-        # 요청 데이터에서 필터 값들 추출
         building_title = data.building_title
         capacity_max = data.capacity_max
         type = data.type
@@ -52,12 +52,11 @@ def search(request, data: SearchfilterRequestSchema):
         has_mic = data.has_mic
         desk_type = data.desk_type
 
-        # 모든 강의실 데이터를 가져오기
-        all_classrooms = classroom_inf.objects.all()
+        all_classrooms = ClassroomInfDev.objects.all()
 
         result = []
 
-        # 필터 조건들을 하나의 리스트로 저장
+
         filters = [
             (building_title, lambda c: c.building_name == building_title),
             (capacity_max, lambda c: c.capacity <= capacity_max if capacity_max is not None else True),
@@ -67,11 +66,8 @@ def search(request, data: SearchfilterRequestSchema):
             (desk_type, lambda c: c.desk_type == desk_type if desk_type is not None else True),
         ]
 
-        # 모든 강의실을 순회하며 필터링
         for classroom in all_classrooms:
-            # 각 필터 조건을 체크
             if all(condition(classroom) if value else True for value, condition in filters):
-                # 조건에 맞는 강의실을 결과 리스트에 추가
                 result.append({
                     "Building_title": classroom.building_name,
                     "Place_title": classroom.place_name,
@@ -81,15 +77,14 @@ def search(request, data: SearchfilterRequestSchema):
                     "Desk_type": classroom.desk_type
                 })
 
-        # 결과가 있으면 반환
+
         if result:
             return JsonResponse({"success": True, "data": result}, status=200)
         else:
-            # 결과가 없으면 오류 메시지 반환
             return JsonResponse({"message": "조건에 맞는 강의실이 없습니다."}, status=404)
 
     except Exception as e:
-        # 예외 발생 시 오류 메시지 출력
+
         print(f"Error: {str(e)}")
         return JsonResponse({"message": "서버에서 오류가 발생했습니다."}, status=500)
 
@@ -100,7 +95,7 @@ def search(request, data: SearchfilterRequestSchema):
 @csrf_exempt
 @api.post('/classroom/room/list', response=ClassroomListResponse)
 def search(request, page: int = 1):
-    classrooms = classroom_inf.objects.all()
+    classrooms = ClassroomInfDev.objects.all()
 
 
     paginator = Paginator(classrooms, 10)
@@ -141,7 +136,7 @@ def classroom_detail(request, data: ClassroomDetailRequestSchema):
     try:
         print(f"Request Data: {data}")
 
-        classrooms = classroom_inf.objects.all()
+        classrooms = ClassroomInfDev.objects.all()
 
         filtered_classrooms = [
             classroom for classroom in classrooms
@@ -171,7 +166,7 @@ def classroom_detail(request, data: ClassroomDetailRequestSchema):
 @api.post("/classroom/room/create", response=ClassroomCreateResponseSchema)
 def create_classroom(request, data: ClassroomCreateRequestSchema):
 
-    classroom = classroom_inf.objects.create(
+    classroom = ClassroomInfDev.objects.create(
         image_id=data.image_id,
         building_name=data.building_name,
         capacity=data.capacity_min,
@@ -181,9 +176,7 @@ def create_classroom(request, data: ClassroomCreateRequestSchema):
         type=data.type,
         has_projector=data.has_projector,
         has_mic=data.has_mic,
-        desk_type=data.desk_type,
-        reserved_time=data.reserved_time,
-        reserved=data.reserved
+        desk_type=data.desk_type
     )
 
 
@@ -210,7 +203,7 @@ def create_classroom(request, data: ClassroomCreateRequestSchema):
 @api.post("/classroom/room/update", response=ClassroomCreateResponseSchema)
 def update_classroom(request, data: ClassroomCreateRequestSchema):
     try:
-        classrooms = classroom_inf.objects.filter(building_name=data.building_name, place_name=data.place_name)
+        classrooms = ClassroomInfDev.objects.filter(building_name=data.building_name, place_name=data.place_name)
 
         if classrooms.count() > 1:
             return JsonResponse({"message": "조건에 맞는 강의실이 여러 개 존재합니다."}, status=400)
@@ -230,8 +223,6 @@ def update_classroom(request, data: ClassroomCreateRequestSchema):
         classroom.has_projector = data.has_projector
         classroom.has_mic = data.has_mic
         classroom.desk_type = data.desk_type
-        classroom.reserved_time = data.reserved_time
-        classroom.reserved = data.reserved
 
 
         classroom.save()
@@ -256,7 +247,7 @@ def update_classroom(request, data: ClassroomCreateRequestSchema):
             }
         }
     
-    except classroom_inf.DoesNotExist:
+    except ClassroomInfDev.DoesNotExist:
         return JsonResponse({"message": "강의실이 존재하지 않습니다."}, status=404)
     except Exception as e:
         return JsonResponse({"message": f"서버에서 오류가 발생했습니다: {str(e)}"}, status=500)
@@ -265,7 +256,7 @@ def update_classroom(request, data: ClassroomCreateRequestSchema):
 @api.post("/classroom/room/delete", response=ClassroomDeleteResponseSchema)
 def delete_classroom(request, data: ClassroomDeleteRequestSchema):
 
-    classroom = get_object_or_404(classroom_inf, building_name=data.building_name, place_name=data.place_name)
+    classroom = get_object_or_404(ClassroomInfDev, building_name=data.building_name, place_name=data.place_name)
 
 
     classroom.delete()
@@ -281,7 +272,7 @@ def delete_classroom(request, data: ClassroomDeleteRequestSchema):
 def classroom_detail(request, data: ClassroomMoreDetailRequestSchema):
     try:
         
-        classrooms = classroom_inf.objects.filter(building_name=data.building_name, place_name=data.place_name)
+        classrooms = ClassroomInfDev.objects.filter(building_name=data.building_name, place_name=data.place_name)
 
 
         if not classrooms.exists():
@@ -312,3 +303,75 @@ def classroom_detail(request, data: ClassroomMoreDetailRequestSchema):
     except Exception as e:
         # 예외 처리
         return JsonResponse({"message": f"서버에서 오류가 발생했습니다: {str(e)}"}, status=500)
+
+#구현완료
+@api.post("/classroom/room/review", response=ClassroomReviewResponseSchema)
+def review_room(request, data: ClassroomReviewRequestSchema):
+
+    classroom = get_object_or_404(ClassroomReviewDev, building_name=data.building_name, place_name=data.place_name)
+
+    print(classroom)
+    return {
+        "success": True,
+        "message": "강의실 리뷰가 성공적으로 조회되었습니다.",
+        "building_name": classroom.building_name,
+        "place_name": classroom.place_name,
+        "mic_status": classroom.mic_status,
+        "clean_status": classroom.clean_status,
+        "size_satisfaction": classroom.size_satisfaction,
+        "air_conditioner_status": classroom.air_conditioner_status,
+        "user_id": classroom.user_id,
+    }
+
+#구현완료
+@api.post("/classroom/room/review/create", response=ClassroomReviewCreateResponseSchema)
+def create_review(request, data: ClassroomReviewCreateRequestSchema):
+
+    review = ClassroomReviewDev.objects.create(
+        building_name=data.building_name,
+        place_name=data.place_name,
+        mic_status=data.mic_status,
+        clean_status=data.clean_status,  
+        size_satisfaction=data.size_satisfaction,
+        air_conditioner_status=data.air_conditioner_status,
+        user_id=data.user_id,
+    )
+
+    return {
+        "success": True,
+        "message": "강의실 리뷰가 등록되었습니다.",
+        "building_name": review.building_name,
+        "place_name": review.place_name,
+        "mic_status": review.mic_status,
+        "clean_status": review.clean_status,  # 응답에 맞춰 cleanliness로 반환
+        "size_satisfaction": review.size_satisfaction,
+        "air_conditioner_status": review.air_conditioner_status,
+        "user_id": review.user_id,
+    }
+
+#구현완료
+@api.put("/classroom/room/review/update", response=ClassroomReviewUpdateResponseSchema)
+def update_review(request, data: ClassroomReviewUpdateRequestSchema):
+
+    review = get_object_or_404(ClassroomReviewDev, building_name=data.building_name, place_name=data.place_name)
+
+    review.mic_status = data.mic_status
+    review.clean_status = data.cleanliness  
+    review.size_satisfaction = data.size_satisfaction
+    review.air_conditioner_status = data.air_conditioner_status
+    review.user_id = data.user_id
+    
+    review.save()
+
+    return {
+        "success": True,
+        "message": "강의실 리뷰가 성공적으로 업데이트되었습니다.",
+        "building_name": review.building_name,
+        "place_name": review.place_name,
+        "mic_status": review.mic_status,
+        "cleanliness": review.clean_status,
+        "size_satisfaction": review.size_satisfaction,
+        "air_conditioner_status": review.air_conditioner_status,
+        "user_id": review.user_id,
+    }
+

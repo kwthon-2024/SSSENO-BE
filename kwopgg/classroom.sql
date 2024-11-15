@@ -1,22 +1,18 @@
-CREATE TABLE `classroom_inf` (
-  `capacity` int,
-  `reserved_time` datetime,
-  `place_name` varchar(100),
-  `image_id` varchar(50),
-  `type` varchar(50),
-  `has_mic` boolean,
-  `has_projector` varchar(50),
-  `building_name` varchar(100),
-  `description` text,
-  `reserved` boolean,
-  `desk_type` varchar(50),
-  `rating` float
+CREATE TABLE `classroom_inf_dev` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY, 
+  `capacity` int NULL,                  
+  `capacity_max` int NULL,              
+  `reserved_time` datetime NULL,        
+  `place_name` varchar(100) NULL,       
+  `image_id` varchar(50) NULL,          
+  `type` varchar(50) NULL,              
+  `has_mic` boolean NULL,               
+  `has_projector` varchar(50) NULL,     
+  `building_name` varchar(100) NULL,    
+  `description` text NULL,              
+  `reserved` boolean NULL,              
+  `desk_type` varchar(50) NULL,         
+  `rating` float NULL                   
 );
 
-CREATE TABLE `classroom_review` (
-  `mic_status` decimal(3,1),
-  `clean_status` decimal(3,1),
-  `air_conditioner_status` decimal(3,1),
-  `size_satisfaction` decimal(3,1),
-  `user_id` int
-);
+CREATE TABELE 

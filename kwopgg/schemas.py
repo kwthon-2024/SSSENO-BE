@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from ninja import Schema
 from datetime import datetime
+from typing import Optional
 
 class SearchRequestSchema(Schema):
     building_title: str
@@ -55,8 +56,7 @@ class ClassroomCreateRequestSchema(BaseModel):
     has_mic: bool
     has_clock: bool
     desk_type: str
-    reserved_time: datetime #추후 수정(빼야함)
-    reserved: bool #추후 수정(뺴야함)
+
 
 class ClassroomCreateResponseSchema(BaseModel):
     success: bool
@@ -87,4 +87,61 @@ class ClassroomMoreDetailResponseSchema(BaseModel):
     has_mic: bool
     desk_type: str
     reserved: bool 
-    
+
+class ClassroomReviewRequestSchema(BaseModel):
+    building_name: str
+    place_name: str
+
+class ClassroomReviewResponseSchema(BaseModel):
+    success: bool
+    message: str
+    building_name: str
+    place_name: str
+    rating: Optional[float] = None  #
+    mic_status: Optional[float] = None  
+    clean_status: Optional[float] = None
+    air_conditioner_status: Optional[float] = None
+    size_satisfaction: Optional[float] = None
+    user_id: int
+
+
+class ClassroomReviewCreateRequestSchema(BaseModel):
+    building_name: str
+    place_name: str
+    mic_status: Optional[float] = None  
+    clean_status: Optional[float] = None
+    size_satisfaction: Optional[float] = None
+    air_conditioner_status: Optional[float] = None
+    user_id: int
+
+
+class ClassroomReviewCreateResponseSchema(BaseModel):
+    success: bool
+    message: str
+    building_name: str
+    place_name: str
+    mic_status: Optional[float] = None  
+    clean_status: Optional[float] = None
+    size_satisfaction: Optional[float] = None
+    air_conditioner_status: Optional[float] = None
+    user_id: int
+
+class ClassroomReviewUpdateRequestSchema(BaseModel):
+    building_name: str
+    place_name: str
+    mic_status: float
+    cleanliness: float
+    size_satisfaction: float
+    air_conditioner_status: float
+    user_id: int
+
+class ClassroomReviewUpdateResponseSchema(BaseModel):
+    success: bool
+    message: str
+    building_name: str
+    place_name: str
+    mic_status: float
+    cleanliness: float
+    size_satisfaction: float
+    air_conditioner_status: float
+    user_id: int
