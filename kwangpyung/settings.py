@@ -81,11 +81,14 @@ WSGI_APPLICATION = 'kwangpyung.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # MySQL 사용
+        'NAME': 'test_schema',          # 사용할 데이터베이스 이름
+        'USER': 'root',         # MySQL 사용자 이름
+        'PASSWORD': 'hesu0821!',     # MySQL 비밀번호
+        'HOST': 'localhost',                   # MySQL 호스트 (로컬 환경에서는 localhost)
+        'PORT': '3306',                        # MySQL 기본 포트
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
