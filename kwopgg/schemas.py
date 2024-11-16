@@ -3,6 +3,7 @@ from ninja import Schema
 from datetime import datetime
 from typing import Optional
 
+
 class SearchRequestSchema(Schema):
     building_title: Optional[str] = None
     capacity_max: Optional[int] = None

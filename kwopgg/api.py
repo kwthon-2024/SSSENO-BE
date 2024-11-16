@@ -27,7 +27,7 @@ def search(request, data: SearchRequestSchema):
 
         # 필터링된 결과
         filtered_classrooms = ClassroomInfDev.objects.filter(**filters)
-        result_data = list(filtered_classrooms.values('building_name', 'capacity', 'place_name'))
+        result_data = list(filtered_classrooms.values('building_name', 'capacity', 'place_name','rating'))
 
         # 결과 반환
         if result_data:
