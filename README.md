@@ -60,6 +60,11 @@ Kwthon 2024 : 광운대학교 동아리 연합 해커톤
 
 ![KakaoTalk_Photo_2024-11-16-16-27-14](https://github.com/user-attachments/assets/e31f2b89-c7a3-45c0-889e-02b6d93b5d1a)
 
+## 💾 ERD
+
+<img width="808" alt="erd" src="https://github.com/user-attachments/assets/f5ae3d1e-47de-408b-9966-67823b895d43">
+
+
 
 ## 🖥️ 기술 스택
 
