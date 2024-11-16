@@ -7,7 +7,7 @@
 
 사이트 도메인: [**https://kwangpyung.kro.kr**](https://kwangpyung.kro.kr/)
 
-광운해커톤 : 광운대학교 동아리 연합 해커톤
+Kwthon 2024 : 광운대학교 동아리 연합 해커톤
 
 ## 🔎 Pain Point(문제점)
 
@@ -29,6 +29,12 @@
 3) 교수 정보에 대한 문제
    * 교수님의 공개정보를 찾기 어려움.
    * 각 교수님별 수업 스타일을 알기 힘듦.
+
+
+## ✓ 해결책 (Solution)
+   * 간편화된 청원 게시판 제작 - /kwsmg
+   * 교수정보/스타일 조회 서비스 제작 - /kwpr
+   * 강의실 정보 조회 서비스 제작 - /kwopgg
 
 
 ## 🗒️ 서비스 특징
@@ -65,4 +71,11 @@
 ## **📌** 깃허브 주소
 - 프론트 레포지토리(Frontend Repository): [https://github.com/kwthon/SSSENO-FE](https://github.com/kwthon-2024/SSSENO-FE)
 - 백엔드(Django) 레포지토리(Backend(Django) Repository): [https://github.com/kwthon-2024/SSSENO-BE](https://github.com/kwthon-2024/SSSENO-BE)
+
+
+## 😎 Team
+|                                                           [이주석](https://github.com/DDuckyee)                                                           |                           [유아름](https://github.com/yooaknow)                           |                           [최세인](https://github.com/sein12)                           |                         [장원준](https://github.com/jangwonjun)                          |                                                      [송희수](https://github.com/DSdevsong)                                                      |                          [이정우](https://github.com/wjddn4502)                          |
+|:----------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
+| <img width = "300" src ="https://avatars.githubusercontent.com/DDuckyee"> | <img width = "300" src ="https://avatars.githubusercontent.com/yooaknow"> | <img width = "300" src ="https://avatars.githubusercontent.com/sein12"> | <img width = "300" src ="https://avatars.githubusercontent.com/jangwonjun"> | <img width = "300" src ="https://avatars.githubusercontent.com/DSdevsong"> | <img width = "300" src ="https://avatars.githubusercontent.com/wjddn4502"> |
+|                                                               Project Manager                                                                 |                                  Frontend Developer                                  |                                  Fronted Developer                                   |                                  Backend Developer CI/CD                                 |                                                               Backend Developer                                                                |                                  Backend Developer                                   |
 
