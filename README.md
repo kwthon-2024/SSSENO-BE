@@ -41,7 +41,13 @@
 
 ![KakaoTalk_Photo_2024-11-16-16-38-13](https://github.com/user-attachments/assets/d7e73ee2-4cf1-43aa-b408-a8aea74df23e)
 
+![KakaoTalk_Photo_2024-11-16-16-50-18](https://github.com/user-attachments/assets/237ecc7a-989c-4419-a373-fe127ae82933)
 
+![KakaoTalk_Photo_2024-11-16-16-50-23](https://github.com/user-attachments/assets/def7800f-4e3c-479f-b0c9-3d2634ca6c25)
+
+![KakaoTalk_Photo_2024-11-16-16-50-25](https://github.com/user-attachments/assets/62de71aa-90aa-418a-8ca9-efbba18cd096)
+
+![KakaoTalk_Photo_2024-11-16-16-50-29](https://github.com/user-attachments/assets/dde327e5-9585-43a2-966c-56a602a11faa)
 
 
 ## **📜 아키텍쳐(Architecture)**
