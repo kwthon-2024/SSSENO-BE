@@ -99,7 +99,7 @@ class ComplaintSchema(BaseModel):
 
 
 # 청원 상세 조회 API
-@api2.get("/petition/complaint/detail", response=ComplaintFormSchema)
+@api2.post("/petition/complaint/detail", response=ComplaintFormSchema)
 def get_complaint_detail(request, data: ComplaintSchema):
     try:
         # `complaint_id`를 기준으로 데이터를 검색
