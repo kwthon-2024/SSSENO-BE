@@ -39,5 +39,21 @@
 
 3)
 
+## **📜 아키텍쳐(Architecture)**
 
+![KakaoTalk_Photo_2024-11-16-16-27-14](https://github.com/user-attachments/assets/e31f2b89-c7a3-45c0-889e-02b6d93b5d1a)
+
+
+## 🖥️ 기술 스택
+
+<뱃지 추가>
+
+- 프론트 파트(Front part): react, Figma
+- 백엔드 파트(Backend part): Django, Mysql
+- 배포(Deployment): Amazon Cloud AWS, Nginx, Github Actions
+- 이 외(Other): Figma, Notion
+
+## **📌** 깃허브 주소
+- 프론트 레포지토리(Frontend Repository): [https://github.com/kwthon/SSSENO-FE](https://github.com/kwthon-2024/SSSENO-FE)
+- 백엔드(Django) 레포지토리(Backend(Django) Repository): [https://github.com/kwthon-2024/SSSENO-BE](https://github.com/kwthon-2024/SSSENO-BE)
 
