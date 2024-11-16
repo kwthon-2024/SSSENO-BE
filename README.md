@@ -64,6 +64,57 @@ Kwthon 2024 : 광운대학교 동아리 연합 해커톤
 
 <img width="808" alt="erd" src="https://github.com/user-attachments/assets/f5ae3d1e-47de-408b-9966-67823b895d43">
 
+## 📢 API 
+
+#### 🚨 청원게시판(kwsmg)
+
+| Method | Endpoint                  | Description                                   |
+|--------|---------------------------|-----------------------------------------------|
+| POST    | `/petition/complaint/add`  | 청원을 접수(이하, 생성)하는 기능입니다. |
+| POST   | `/petition/complaint/delete`  | 작성한 청원을 삭제하는 기능입니다.             |
+| PUT    | `/petition/complaint/modify`  | 작성한 청원을 수정하는 기능입니다.              |
+| POST | `/petition/complaint/read`  | 청원을 조회하는 기능입니다.                   |
+| GET    | `/petition/complaint/detail`  | 청원의 세부정보를 조회하는 기능입니다. |
+| POST   | `/petition/complaint/search`  | 청원을 검색하는 기능입니다.             |
+| PUT    | `/petition/complaint/gachu`  | 특정 청원을 추천하는 기능입니다.              |
+| PUT | `/petition/answer/modify`  | 작성한 청원에 대한 답변을 하는 기능입니다.                   |
+
+#### 🧑‍🏫 교수 평가(kwpr)
+
+| Method | Endpoint                  | Description                                   |
+|--------|---------------------------|-----------------------------------------------|
+| POST    | `/total/professor/search`  | 교수님을 검색하는 기능입니다. |
+| PUT   | `/total/professor/evaluate`  | 교수님을 평가하는 기능입니다.             |
+| GET    | `/total/professor/detail`  | 교수님의 세부정보를 검색하는 기능입니다.               |
+| POST | `/total/professor/add`  | 교수님 및 교수님 정보를 추가하는 기능입니다.                   |
+| DELETE    | `total/professor/delete`  | 교수님 및 교수님 정보를 삭제하는 기능입니다. |
+| PUT   | `/total/professor/modify`  | 교수님 및 교수님 정보를 수정하는 기능입니다.             |
+| POST    | `/total/lecture/search`  | 과목단위로 강의를 검색하는 기능입니다.              |
+
+
+#### ✓ 강의실 평가(kwopgg)
+
+| Method | Endpoint                  | Description                                   |
+|--------|---------------------------|-----------------------------------------------|
+| POST    | `/classroom/room/search`  | 강의실을 검색하는 기능입니다. |
+| POST   | `/classroom/room/filter`  | 강의실의 특정조건으로 검색하는 기능입니다.             |
+| POST    | `/classroom/room/list`  | 등록된 강의실을 조회하는 기능입니다.               |
+| POST | `/classroom/room/detail`  | 강의실의 특정 조건을 조회하는 기능입니다.                   |
+| POST    | `/classroom/room/create`  |강의실을 생성하는 기능입니다. |
+| PUT   | `/classroom/room/update`  | 강의실을 수정하는 기능입니다.            |
+| DELETE    | `/classroom/room/delete`  | 강의실을 삭제하는 기능입니다.              |
+| POST   | `/classroom/room/detail-page`  | 강의실의 상세 조건을 조회하는 기능입니다.            |
+| POST    | `/classroom/room/review`  | 강의실의 평을 조회하는 기능입니다.              |
+| POST    | `/classroom/room/review/create`  | 강의실의 평가를 추가하는 기능입니다.              |
+| PUT   | `/classroom/room/review/update`  | 강의실의 평가를 수정하는 기능입니다.            |
+
+#### 💾 로그인/회원가입 관련 (kwopgg)
+
+| Method | Endpoint                  | Description                                   |
+|--------|---------------------------|-----------------------------------------------|
+| POST    | `/api/authenticate`  | Klas에서 사용자의 정보를 반환하여 회원가입 및 로그인하는 기능입니다. |
+
+
 
 
 ## 🖥️ 기술 스택
