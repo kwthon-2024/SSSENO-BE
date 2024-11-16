@@ -11,34 +11,33 @@ from django.shortcuts import get_object_or_404
 
 api = NinjaAPI(urls_namespace="kwopgg_api")
 
-#구현완료
-@csrf_exempt
 @api.post('/classroom/room/search', response=List[dict])
 def search(request, data: SearchRequestSchema):
     try:
-        building_title = data.building_title
-        capacity_max = data.capacity_max 
+        # 데이터 초기화
+        building_title = data.building_title or None
+        capacity_min = data.capacity_max or None  # 최소 용량 기준으로 처리
 
-        all_classrooms = ClassroomInfDev.objects.all()
-        result_data = []
+        # 필터 조건 설정
+        filters = {}
+        if building_title:
+            filters['building_name'] = building_title
+        if capacity_min:
+            filters['capacity__gte'] = capacity_min  # 최소 용량 조건 추가
 
-        for classroom in all_classrooms:
-            if classroom.building_name == building_title and classroom.capacity >= capacity_max:
-                result_data.append({
-                    "building_name": classroom.building_name,
-                    "capacity": classroom.capacity,
-                    "place_name": classroom.place_name,
-                })
+        # 필터링된 결과
+        filtered_classrooms = ClassroomInfDev.objects.filter(**filters)
+        result_data = list(filtered_classrooms.values('building_name', 'capacity', 'place_name'))
 
+        # 결과 반환
         if result_data:
-            return JsonResponse({"data": result_data}, status=200)
+            return result_data
         else:
-            return JsonResponse({"message": "해당 조건에 맞는 강의실이 없습니다."}, status=404)
+            return {"message": "해당 조건에 맞는 강의실이 없습니다."}, 404
 
     except Exception as e:
-
         print(f"Error: {str(e)}")
-        return JsonResponse({"message": "서버에서 오류가 발생했습니다."}, status=500)
+        return {"message": "서버에서 오류가 발생했습니다."}, 500
     
 #구현완료
 @csrf_exempt

@@ -4,8 +4,8 @@ from datetime import datetime
 from typing import Optional
 
 class SearchRequestSchema(Schema):
-    building_title: str
-    capacity_max: int
+    building_title: Optional[str] = None
+    capacity_max: Optional[int] = None
 
 class SearchfilterRequestSchema(BaseModel):
     building_title: str
