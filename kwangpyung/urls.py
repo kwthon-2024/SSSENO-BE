@@ -10,5 +10,6 @@ from django.urls import path, include
 urlpatterns = [
     path('kwopgg/', include('kwopgg.urls')),  # 'kwopgg/' 경로로 API 연결
     path('kwsmg/', include('kwsmg.urls')),  # 'kwsmg/' 경로로 API 연결
-    path('kwpr/', include('kwpr.urls'))
+    path('kwpr/', include('kwpr.urls')),
+    path('kwauth/', include('kwauth.urls'))
 ]

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'kwopgg',
     'kwsmg',
     'kwpr',
+    'kwauth'
 
 ]
 
